@@ -21,7 +21,8 @@
 # --- Termius (iPhone / Android) ---
 #   1. Open Termius → go to Keychain (bottom nav)
 #   2. Tap + → New Key (generates ED25519 automatically)
-#   3. Tap the key → Export Public Key → copy it
+#   3. Set a passphrase when prompted (optional but recommended)
+#   4. Tap the key → Export Public Key → copy it
 #   Pass the copied key to this script.
 #
 # =============================================================
