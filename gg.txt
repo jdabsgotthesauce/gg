@@ -1,1 +1,30 @@
+#!/bin/bash
+set -e
 
+echo "=== Setting up SSH key auth for kevin@apollo ==="
+
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+
+KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEQmTiqA1pA4vAS9+MEcv4B6gBFE7m/8TWO3YWx+5eCf kevin-mac-to-apollo"
+
+if grep -qF "$KEY" ~/.ssh/authorized_keys 2>/dev/null; then
+  echo "Key already present, skipping append."
+else
+  echo "$KEY" >> ~/.ssh/authorized_keys
+  echo "Key added."
+fi
+
+chmod 600 ~/.ssh/authorized_keys
+
+echo "=== Checking openssh-server ==="
+sudo apt update -qq
+sudo apt install -y openssh-server
+
+echo "=== SSH service status ==="
+sudo systemctl status ssh --no-pager
+
+echo "=== Current IP ==="
+ip addr show wlo1 | grep "inet "
+
+echo "=== Done. Authorized keys file: ==="
+cat ~/.ssh/authorized_keys
