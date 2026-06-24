@@ -1,1 +1,0 @@
-curl -sSL https://raw.githubusercontent.com/jdabsgotthesauce/gg/refs/heads/main/add-pubkey.sh | bash -s -- "ssh-ed25519 AAAA... new-device-label"
