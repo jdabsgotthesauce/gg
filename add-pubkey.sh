@@ -32,4 +32,4 @@ fi
 
 echo ""
 echo "=== Current authorized_keys (labels only) ==="
-awk '{print NF>2 ? $NF : "(no label)"}' "$AUTH_FILE"
+awk '{if (NF>2) print $NF; else print "(no label)"}' "$AUTH_FILE"
